@@ -29,8 +29,10 @@ def load_excel_data(folder_path):
             df_valid = df[df["แต่ละถนน"].notna()].copy()
             df_valid = df_valid[["road_name", "แต่ละถนน", "latlon"]]
             df_valid.columns = ["road_name", "aadt", "latlon"]
-            df_valid[["coords_lat", "coords_lon"]] = df_valid["latlon"].astype(str).str.extract(r"(\d+\.\d+)[,\s]+(\d+\.\d+)")
-            df_valid[["coords_lat", "coords_lon"]] = df_valid[["coords_lat", "coords_lon"]].astype(float, errors="ignore")
+            df_valid[["coords_lat", "coords_lon"]] = (df_valid["latlon"].astype(str).str.
+                                                      extract(r"(\d+\.\d+)[,\s]+(\d+\.\d+)"))
+            df_valid[["coords_lat", "coords_lon"]] = (df_valid[["coords_lat", "coords_lon"]].
+                                                      astype(float, errors="ignore"))
             df_valid["source_file"] = os.path.basename(file)
             df_valid["road_name"] = df_valid["road_name"].apply(clean_text)
             df_all.append(df_valid)
@@ -91,8 +93,10 @@ if __name__ == "__main__":
     print("匹配完成，结果保存为 matched_roads_distance_based.xlsx")
 
     # 处理未匹配数据
-    df_combined["match_key"] = df_combined["road_name"].astype(str) + "_" + df_combined["coords_lat"].astype(str) + "_" + df_combined["coords_lon"].astype(str)
-    df_matched_all["match_key"] = df_matched_all["road_name"].astype(str) + "_" + df_matched_all["coords_lat"].astype(str) + "_" + df_matched_all["coords_lon"].astype(str)
+    df_combined["match_key"] = (df_combined["road_name"].astype(str) + "_" + df_combined["coords_lat"].astype(str)
+                                + "_" + df_combined["coords_lon"].astype(str))
+    df_matched_all["match_key"] = (df_matched_all["road_name"].astype(str) + "_" + df_matched_all["coords_lat"]
+                                   .astype(str) + "_" + df_matched_all["coords_lon"].astype(str))
     df_unmatched = df_combined[~df_combined["match_key"].isin(df_matched_all["match_key"])].copy()
     df_unmatched.to_excel("unmatched_records_distance_based.xlsx", index=False)
     print(f"未匹配记录数：{len(df_unmatched)} ，已保存 unmatched_records_distance_based.xlsx")
