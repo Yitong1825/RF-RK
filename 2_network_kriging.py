@@ -106,5 +106,5 @@ if __name__ == "__main__":
     run_virtual_network_kriging(
         geojson_path="roads_split.geojson",
         csv_path="osm_id_with_aadt.csv",
-        output_path="network_kriging_result.geojson"
+        output_path="network_kriging.geojson"
     )

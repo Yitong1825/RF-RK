@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73ab756-c1af-4144-8841-cd30a1b791c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Kriging.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_clean_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_reader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/name_matching.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple_kriging_v1.py" afterDir="false" />
+    <list default="true" id="f73ab756-c1af-4144-8841-cd30a1b791c7" name="Changes" comment="data_reading finish">
+      <change afterPath="$PROJECT_DIR$/R score" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RK_feature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RK_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/display_observation_points.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/population.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/regression_kriging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_reading.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_data_reading.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network_kriging.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_network_kriging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordinary_kriging.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_ordinary_kriging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recorded_aadt_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_recorded_aadt_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple_kriging_v1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/split_road.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_split_road.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +43,30 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+    <option name="sortKey" value="BY_TYPE" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.1.executor": "Run",
+    "Python.1_data_reading.executor": "Run",
+    "Python.1_split_road.executor": "Run",
+    "Python.2_network_kriging.executor": "Run",
+    "Python.OK.executor": "Run",
+    "Python.RK_test.executor": "Run",
     "Python.aadt_kriging_export.executor": "Run",
     "Python.data.executor": "Run",
     "Python.data_clean_test.executor": "Run",
     "Python.data_reader.executor": "Run",
+    "Python.data_reading.executor": "Run",
+    "Python.display_observation_points.executor": "Run",
+    "Python.kriging_from_osm_id.executor": "Run",
     "Python.name_matching.executor": "Run",
+    "Python.network_kriging.executor": "Run",
+    "Python.regression_kriging.executor": "Run",
+    "Python.road_filter.executor": "Run",
+    "Python.simple_kriging_v1.executor": "Run",
+    "Python.subgraph_local_network_kriging.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -60,6 +80,83 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="1_data_reading" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Kriging" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\Kriging\1_data_reading.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="1_split_road" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Kriging" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\Kriging\1_split_road.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="2_network_kriging" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Kriging" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\Kriging\2_network_kriging.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.1_data_reading" />
+        <item itemvalue="Python.2_network_kriging" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -79,19 +176,79 @@
       <workItem from="1750791059204" duration="54780000" />
       <workItem from="1751630663021" duration="1800000" />
       <workItem from="1751849906548" duration="6021000" />
-      <workItem from="1752070448750" duration="6871000" />
+      <workItem from="1752070448750" duration="7533000" />
+      <workItem from="1752208691810" duration="4560000" />
+      <workItem from="1752702188253" duration="8441000" />
+      <workItem from="1753661481610" duration="35581000" />
+      <workItem from="1754053213958" duration="1882000" />
+      <workItem from="1754060769673" duration="36478000" />
+      <workItem from="1754658071973" duration="1232000" />
+      <workItem from="1754698106112" duration="1001000" />
+      <workItem from="1755605583842" duration="6650000" />
+      <workItem from="1756072568854" duration="20824000" />
     </task>
+    <task id="LOCAL-00001" summary="data_reading finish">
+      <option name="closed" value="true" />
+      <created>1752114473173</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1752114473173</updated>
+    </task>
+    <task id="LOCAL-00002" summary="data_reading finish">
+      <option name="closed" value="true" />
+      <created>1752114561366</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1752114561366</updated>
+    </task>
+    <task id="LOCAL-00003" summary="data_reading finish">
+      <option name="closed" value="true" />
+      <created>1752114986438</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1752114986438</updated>
+    </task>
+    <task id="LOCAL-00004" summary="data_reading finish">
+      <option name="closed" value="true" />
+      <created>1754159456230</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754159456230</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="data_reading finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="data_reading finish" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Kriging$1_data_reading.coverage" NAME="1_data_reading Coverage Results" MODIFIED="1755606346957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Kriging$data_clean_test.coverage" NAME="data_clean_test Coverage Results" MODIFIED="1751554542384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Kriging$test.coverage" NAME="test Coverage Results" MODIFIED="1751545396058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Kriging$data.coverage" NAME="data Coverage Results" MODIFIED="1752113561455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$test.coverage" NAME="test Coverage Results" MODIFIED="1754633800233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$display_observation_points.coverage" NAME="display_observation_points Coverage Results" MODIFIED="1756434019799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$road_filter.coverage" NAME="road_filter Coverage Results" MODIFIED="1756523790739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Kriging$data_reader.coverage" NAME="data_reader Coverage Results" MODIFIED="1751561893545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$2_network_kriging.coverage" NAME="2_network_kriging Coverage Results" MODIFIED="1754238350937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Kriging$aadt_kriging_export.coverage" NAME="aadt_kriging_export Coverage Results" MODIFIED="1751628095426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$data_reading.coverage" NAME="data_reading Coverage Results" MODIFIED="1754086016808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$network_kriging.coverage" NAME="network_kriging Coverage Results" MODIFIED="1754054686469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$subgraph_local_network_kriging.coverage" NAME="subgraph_local_network_kriging Coverage Results" MODIFIED="1754049873932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
+    <SUITE FILE_PATH="coverage/Kriging$simple_kriging_v1.coverage" NAME="simple_kriging_v1 Coverage Results" MODIFIED="1754049587245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$data.coverage" NAME="data Coverage Results" MODIFIED="1752113561455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$1_split_road.coverage" NAME="1_split_road Coverage Results" MODIFIED="1754237996938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$kriging_from_osm_id.coverage" NAME="kriging_from_osm_id Coverage Results" MODIFIED="1754027222184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
+    <SUITE FILE_PATH="coverage/Kriging$RK_test.coverage" NAME="RK_test Coverage Results" MODIFIED="1756363206011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$OK.coverage" NAME="OK Coverage Results" MODIFIED="1754023158987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Kriging$name_matching.coverage" NAME="name_matching Coverage Results" MODIFIED="1751849934615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$1.coverage" NAME="1 Coverage Results" MODIFIED="1754236865467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kriging$regression_kriging.coverage" NAME="regression_kriging Coverage Results" MODIFIED="1756369633199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

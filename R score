@@ -1,0 +1,24 @@
+variogram_model = linear
+===== LinearRegression =====
+Regression Score: 0.2832
+RK Score:         -0.1723
+
+===== RandomForest =====
+Regression Score: 0.0226
+RK Score:         -0.1397
+
+=================================================================================
+===== LinearRegression =====
+Regression Score: 0.2971
+RK Score:         -0.1684
+
+===== RandomForest =====
+Regression Score: 0.0758
+RK Score:         -0.0875
+
+=================================================================================
+# ===== LinearRegression =====
+# Regression Score (R²): 0.2915
+#
+# ===== RandomForest =====
+# Regression Score (R²): 0.6428

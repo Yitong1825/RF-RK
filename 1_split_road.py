@@ -4,7 +4,7 @@ import pandas as pd
 from shapely.geometry import LineString, MultiLineString
 
 # === 1. 加载数据 ===
-gdf_roads = gpd.read_file("road_json.geojson")
+gdf_roads = gpd.read_file("filtered_by_length.geojson")
 df_obs = pd.read_csv("osm_id_with_aadt.csv")
 df_obs["osm_id"] = df_obs["osm_id"].astype("Int64")
 gdf_roads["osm_id"] = gdf_roads["osm_id"].astype("Int64")
@@ -43,4 +43,4 @@ gdf_exploded["segment_id"] = gdf_exploded.index + 1
 
 # 保存结果
 gdf_exploded.to_file("roads_split.geojson", driver="GeoJSON")
-print("道路已拆分为独立段落，保存在 roads_split_segments.geojson")
+print("道路已拆分为独立段落，保存在 roads_split.geojson")
