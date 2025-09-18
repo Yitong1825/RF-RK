@@ -1,4 +1,4 @@
-#读取excel和geojson文件，匹配，输出csv标注了有记录的道路的osm id和aadt值
+#Read Excel and GeoJSON files, match them, and output a CSV file that labels the OSM IDs and AADT values of the roads with records.
 import os
 import glob
 import pandas as pd
@@ -10,14 +10,14 @@ import unicodedata
 import re
 
 
-# =============================== 通用清洗函数 ===================================
+# =============================== text clean ===================================
 def clean_text(text):
     text = str(text)
     text = unicodedata.normalize('NFC', text)
     text = re.sub(r'[\u200b\u200c\u200d\u2060\ufeff]', '', text)
     return text.strip().lower()
 
-# =============================== 读取 Excel 数据函数 ===================================
+# =============================== read Excel  ===================================
 def load_excel_data(folder_path):
     excel_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
     df_all = []
@@ -42,7 +42,7 @@ def load_excel_data(folder_path):
     df_combined = df_combined[df_combined["coords_lat"].notna() & df_combined["coords_lon"].notna()]
     return df_combined
 
-# =============================== 读取道路数据函数 ===================================
+# =============================== read road(OSM) data ===================================
 def load_road_data(geojson_path):
     gdf_roads = gpd.read_file(geojson_path, encoding="utf-8-sig")
     gdf_roads = gdf_roads.to_crs(epsg=32647)
@@ -50,17 +50,16 @@ def load_road_data(geojson_path):
     gdf_roads["name"] = gdf_roads["name"].apply(clean_text)
     gdf_roads = gdf_roads[~gdf_roads.geometry.is_empty & gdf_roads.geometry.notna()]
 
-    # 处理 osm_id 字段
     if "osm_id" in gdf_roads.columns:
         gdf_roads["osm_id"] = gdf_roads["osm_id"].astype("Int64")
     elif "@id" in gdf_roads.columns:
         gdf_roads["osm_id"] = gdf_roads["@id"].str.extract(r'(\d+)').astype("Int64")
     else:
-        print("警告：GeoJSON 文件中找不到 osm_id 或 @id 字段。")
+        print("can't find osm_id")
 
     return gdf_roads
 
-# =============================== 执行匹配函数 ===================================
+# =============================== matching function ===================================
 def match_points_to_roads(df_combined, gdf_roads, search_radius=50, match_threshold=60):
     df_combined["geometry"] = df_combined.apply(lambda row: Point(row["coords_lon"], row["coords_lat"]), axis=1)
     gdf_points = gpd.GeoDataFrame(df_combined, geometry="geometry", crs="EPSG:4326")
@@ -85,7 +84,7 @@ def match_points_to_roads(df_combined, gdf_roads, search_radius=50, match_thresh
 
     return pd.DataFrame(matched_rows)
 
-# =============================== 增加属性并保存新 GeoJSON 文件 ===================================
+# =============================== add attributes and save to new GeoJSON file ===================================
 def copy_and_update_geojson(geojson_path, df_matched_all, output_path):
     # 1. 读取原始道路数据
     gdf = gpd.read_file(geojson_path, encoding="utf-8-sig")
@@ -113,7 +112,7 @@ def copy_and_update_geojson(geojson_path, df_matched_all, output_path):
     print(f"A new file containing the AADT values and dates has been generated：{output_path}")
 
 
-# =============================== 主函数逻辑 ===================================
+# =============================== main ===================================
 if __name__ == "__main__":
     folder_path = "D:/Kriging/excel_data/"
     geojson_path = "road_json.geojson"

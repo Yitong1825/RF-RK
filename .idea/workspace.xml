@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f73ab756-c1af-4144-8841-cd30a1b791c7" name="Changes" comment="data_reading finish">
-      <change afterPath="$PROJECT_DIR$/421.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/422.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/423.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RK.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RK2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RK3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RK4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VI.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/road_density.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/42.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_data_reading.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_data_reading.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,54 +34,54 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.1.executor": "Run",
-    "Python.1_data_reading.executor": "Run",
-    "Python.1_split_road.executor": "Run",
-    "Python.2_network_kriging.executor": "Run",
-    "Python.42.executor": "Run",
-    "Python.421.executor": "Run",
-    "Python.422.executor": "Run",
-    "Python.423.executor": "Run",
-    "Python.OK.executor": "Run",
-    "Python.RK.executor": "Run",
-    "Python.RK2.executor": "Run",
-    "Python.RK3.executor": "Run",
-    "Python.RK4.executor": "Run",
-    "Python.RK_test.executor": "Run",
-    "Python.VI.executor": "Run",
-    "Python.aadt_kriging_export.executor": "Run",
-    "Python.data.executor": "Run",
-    "Python.data_clean_test.executor": "Run",
-    "Python.data_reader.executor": "Run",
-    "Python.data_reading.executor": "Run",
-    "Python.display_observation_points.executor": "Run",
-    "Python.kriging_from_osm_id.executor": "Run",
-    "Python.name_matching.executor": "Run",
-    "Python.network_kriging.executor": "Run",
-    "Python.poi.executor": "Run",
-    "Python.population.executor": "Run",
-    "Python.regression_kriging.executor": "Run",
-    "Python.result.executor": "Run",
-    "Python.road_density.executor": "Run",
-    "Python.road_filter.executor": "Run",
-    "Python.simple_kriging_v1.executor": "Run",
-    "Python.subgraph_local_network_kriging.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_data_reading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_split_road.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_network_kriging.executor&quot;: &quot;Run&quot;,
+    &quot;Python.42.executor&quot;: &quot;Run&quot;,
+    &quot;Python.421.executor&quot;: &quot;Run&quot;,
+    &quot;Python.422.executor&quot;: &quot;Run&quot;,
+    &quot;Python.423.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OK.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RK.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RK2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RK3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RK4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RK_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.aadt_kriging_export.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_clean_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_reader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_reading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.display_observation_points.executor&quot;: &quot;Run&quot;,
+    &quot;Python.kriging_from_osm_id.executor&quot;: &quot;Run&quot;,
+    &quot;Python.name_matching.executor&quot;: &quot;Run&quot;,
+    &quot;Python.network_kriging.executor&quot;: &quot;Run&quot;,
+    &quot;Python.poi.executor&quot;: &quot;Run&quot;,
+    &quot;Python.population.executor&quot;: &quot;Run&quot;,
+    &quot;Python.regression_kriging.executor&quot;: &quot;Run&quot;,
+    &quot;Python.result.executor&quot;: &quot;Run&quot;,
+    &quot;Python.road_density.executor&quot;: &quot;Run&quot;,
+    &quot;Python.road_filter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.simple_kriging_v1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.subgraph_local_network_kriging.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Python.1_data_reading">
     <configuration name="1_data_reading" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Kriging" />
       <option name="ENV_FILES" value="" />
@@ -199,6 +187,7 @@
       <workItem from="1754698106112" duration="1001000" />
       <workItem from="1755605583842" duration="6650000" />
       <workItem from="1756072568854" duration="71485000" />
+      <workItem from="1758199876305" duration="361000" />
     </task>
     <task id="LOCAL-00001" summary="data_reading finish">
       <option name="closed" value="true" />
@@ -240,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756524884607</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="data_reading finish">
+      <option name="closed" value="true" />
+      <created>1758199989343</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758199989343</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
