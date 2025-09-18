@@ -1,17 +1,3 @@
-# regression_kriging_from_roads_and_csv.py
-# ------------------------------------------------------------
-# 输入：
-#   1) roads_with_poi_feats.geojson   —— 全部道路（含 population/maxspeed/roadtype/road_density/POI 特征），无 AADT
-#   2) osm_id_with_aadt.csv           —— 部分道路的 ID + AADT 值（优先列名：osm_id, aadt）
-#
-# 输出：
-#   roads_rk_pred.geojson —— 包含 aadt_pred_reg（回归）、rk_resid（残差克里金）、aadt_pred_rk（最终预测）
-#                            以及 aadt_obs（若该道路在CSV中有观测）
-# ------------------------------------------------------------
-
-import warnings
-warnings.filterwarnings("ignore")
-
 import math
 import numpy as np
 import pandas as pd
@@ -309,7 +295,6 @@ def krige_one(c_vec, C_train, resid_train):
     w = ordinary_kriging_weights(C_train, c_vec)
     return float(np.dot(w, resid_train))
 
-print("[Kriging] 对全部道路做残差 OK 预测…")
 rk_resid_all = np.zeros(C_targets.shape[1], dtype=float)
 for j in range(C_targets.shape[1]):
     rk_resid_all[j] = krige_one(C_targets[:, j], C, r)
@@ -336,7 +321,7 @@ roads_out["aadt_pred_rk"] = (roads_out["aadt_pred_reg"] + roads_out["rk_resid"])
 
 # 10) 导出
 roads_out.to_file(OUT_PATH, driver="GeoJSON")
-print(f"✅ 已输出：{OUT_PATH}")
+print(OUT_PATH)
 # ================== 结尾：变量重要性 & R^2 汇总 ==================
 
 print("\n================ 变量重要性 & R² 汇总 ================")
@@ -420,5 +405,5 @@ print(family_import.to_string(index=False))
 feat_import_df.to_csv("feature_importance_detailed.csv", index=False, encoding="utf-8-sig")
 family_import.to_csv("feature_importance_family.csv", index=False, encoding="utf-8-sig")
 
-print("\n📄 已保存：feature_importance_detailed.csv, feature_importance_family.csv")
+print("out put：feature_importance_detailed.csv, feature_importance_family.csv")
 print("=========================================================\n")

@@ -121,10 +121,6 @@ for name, model in models.items():
     coords_all = np.array(gdf.geometry.centroid.apply(lambda p: (p.x, p.y)).tolist())
     y_reg_all = model.predict(X)
     rk_full_residuals, _ = uk.execute("points", coords_all[:, 0], coords_all[:, 1])
-    # gdf[f"rk_aadt_{name.lower()}"] = np.round(y_reg_all + rk_full_residuals, 0)
-    # gdf[f"rk_aadt_{name.lower()}"] = gdf[f"rk_aadt_{name.lower()}"].clip(lower=0)
-    # gdf[["osm_id", "geometry", f"rk_aadt_{name.lower()}"]].to_file(f"rk_result_{name.lower()}.geojson", driver="GeoJSON")
-    # print(f"✅ 插值输出：rk_result_{name.lower()}.geojson")
 
 # === 6. 模型得分可视化 ===
 plt.figure(figsize=(6, 4))
@@ -153,23 +149,3 @@ if "RandomForest" in feature_weights:
     plt.grid(True, axis="y")
     plt.tight_layout()
     plt.show()
-
-# variogram_model = linear
-# ===== LinearRegression =====
-# Regression Score: 0.2832
-# RK Score:         -0.1723
-#
-# ===== RandomForest =====
-# Regression Score: 0.0226
-# RK Score:         -0.1397
-#
-# ===== SVR =====
-# Regression Score: -0.0697
-# RK Score:         -0.5093
-
-
-# ===== LinearRegression =====
-# Regression Score (R²): 0.29151098440275947
-#
-# ===== RandomForest =====
-# Regression Score (R²): 0.6428034517087193

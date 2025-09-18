@@ -1,26 +1,3 @@
-# svr_regression_kriging_with_saves.py
-# ------------------------------------------------------------
-# 输入：
-#   roads_with_poi_feats.geojson —— 全网道路（含 population/maxspeed/roadtype/road_density/POI 特征），无 AADT
-#   osm_id_with_aadt.csv         —— 部分道路的 ID + AADT 值（如 osm_id + aadt）
-# 过程：
-#   1) 空间均匀 80/20 切分（KMeans 空间簇 + 分簇抽样）
-#   2) SVR(RBF) 回归（标准化 + GroupKFold 空间分组网格搜索）→ 训练残差
-#   3) 残差的“道路网络最短路径距离”普通克里金（仅用训练集）
-#   4) 合成回归克里金预测（全网），并评估 R²/RMSE（基于空间均匀测试集）
-#   5) 保存：
-#       - roads_svr_pred.geojson（纯回归预测）
-#       - roads_rk_pred.geojson（回归克里金预测）
-#       - svr_gridcv_results.csv（网格搜索详细结果）
-#       - svr_best_params.json（最优超参）
-#       - svr_pred_train_test.csv（训练/测试 y_true vs y_pred）
-#       - feature_importance_detailed.csv / feature_importance_family.csv（Permutation Importance）
-# 依赖：geopandas shapely numpy pandas scikit-learn networkx scipy
-# ------------------------------------------------------------
-
-import warnings
-warnings.filterwarnings("ignore")
-
 import json, math
 import numpy as np
 import pandas as pd
@@ -338,7 +315,7 @@ yhat_all = best.predict(X_all)
 roads_out_reg = roads.copy()
 roads_out_reg["aadt_pred_reg_svr"] = yhat_all.astype(float)
 roads_out_reg.to_file(OUT_R_SVR, driver="GeoJSON")
-print(f"✅ 已输出：{OUT_R_SVR}（纯回归预测）")
+print(f"已输出：{OUT_R_SVR}（纯回归预测）")
 
 roads_out_rk = roads.copy()
 roads_out_rk["aadt_obs"]      = roads_out_rk["aadt_obs"].astype(float)
@@ -346,7 +323,7 @@ roads_out_rk["aadt_pred_reg"] = yhat_all.astype(float)
 roads_out_rk["rk_resid"]      = rk_resid_all.astype(float)
 roads_out_rk["aadt_pred_rk"]  = (roads_out_rk["aadt_pred_reg"] + roads_out_rk["rk_resid"]).astype(float)
 roads_out_rk.to_file(OUT_RK, driver="GeoJSON")
-print(f"✅ 已输出：{OUT_RK}（回归克里金预测）")
+print(f"已输出：{OUT_RK}（回归克里金预测）")
 
 # 评估（仅测试集）
 mask_all_is_test = roads.index.isin(test_index)
@@ -367,7 +344,7 @@ pd.DataFrame({
     "y_pred_rk":  np.r_[yhat_tr + rk_resid_all[roads.index.isin(train_index)],
                         rk_pred_test]
 }).to_csv("svr_pred_train_test.csv", index=False, encoding="utf-8-sig")
-print("📄 已保存：svr_gridcv_results.csv, svr_best_params.json, svr_pred_train_test.csv")
+print("已保存：svr_gridcv_results.csv, svr_best_params.json, svr_pred_train_test.csv")
 
 # 10) Permutation Importance（基于测试集，粒度到展开特征）
 prep_best  = best.named_steps["prep"]
@@ -410,7 +387,7 @@ family_import = (feat_import_df.groupby("family", as_index=False)["importance_me
 
 feat_import_df.to_csv("feature_importance_detailed4.csv", index=False, encoding="utf-8-sig")
 family_import.to_csv("feature_importance_family4.csv", index=False, encoding="utf-8-sig")
-print("📄 已保存：feature_importance_detailed.csv, feature_importance_family.csv")
+print("out put：feature_importance_detailed.csv, feature_importance_family.csv")
 
 print("\n================ 总结 ================")
 print(f"[回归]   R²(train)={r2_score(ytr,yhat_tr):.4f}  R²(test)={r2_score(yte,yhat_te):.4f}")

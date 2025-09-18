@@ -1,22 +1,3 @@
-# regression_kriging_geo_stratified_linear.py
-# ------------------------------------------------------------
-# 输入：
-#   roads_with_poi_feats.geojson —— 全网道路（含 population/maxspeed/roadtype/road_density/POI 特征），无 AADT
-#   osm_id_with_aadt.csv         —— 部分道路的 ID + AADT 值（如 osm_id + aadt）
-# 主要过程：
-#   1) 空间均匀 80/20 划分（KMeans 空间簇 + 分簇抽样）
-#   2) 线性模型（Ridge）回归 → 训练残差
-#   3) 残差的“网络距离”普通克里金（仅用训练集构建）
-#   4) 合成回归克里金预测、评估与变量重要性（线性系数）
-# 输出：
-#   roads_rk_pred.geojson
-#   feature_coefficients_detailed.csv
-#   feature_coefficients_family.csv
-# ------------------------------------------------------------
-
-import warnings
-warnings.filterwarnings("ignore")
-
 import math
 import numpy as np
 import pandas as pd
@@ -348,7 +329,7 @@ print(f"[RK]  RMSE(test)= {math.sqrt(mean_squared_error(yte, rk_pred_test)):.1f}
 
 # 9) 导出主结果
 roads_out.to_file(OUT_PATH, driver="GeoJSON")
-print(f"✅ 已输出：{OUT_PATH}")
+print(f"已输出：{OUT_PATH}")
 
 # 10) 变量重要性（线性系数） & R² 汇总
 print("\n================ 变量重要性 & R² 汇总 ================")
@@ -412,5 +393,5 @@ family_import.to_csv("feature_coefficients_family2.csv", index=False, encoding="
 
 print("\n[Coefficient Importance by Family] (sum |coef|)")
 print(family_import.to_string(index=False))
-print("\n📄 已保存：feature_coefficients_detailed.csv, feature_coefficients_family.csv")
+print("\n已保存：feature_coefficients_detailed.csv, feature_coefficients_family.csv")
 print("=========================================================\n")

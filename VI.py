@@ -1,15 +1,5 @@
-# rf_iter_only_geo_stratified.py
-# ------------------------------------------------------------
-# 目标：仅做随机森林（RF）部分的“特征选择 + 迭代调优”
-# - 输入：roads_with_density.geojson（含全网特征），osm_id_with_aadt.csv（ID + AADT观测）
-# - 空间均匀 80/20 拆分（KMeans 空间簇 + 分簇抽样，确保空间独立）
-# - 迭代：随机搜索超参 + 基于内置重要性的“累计覆盖率”裁剪
-# - 评估：仅用随机森林的测试集 R² / RMSE
-# - 输出：每轮的特征重要性 CSV + 历史记录 + 最优模型重要性（含置换重要性）
-# ------------------------------------------------------------
-
-import warnings
-warnings.filterwarnings("ignore")
+# import warnings
+# warnings.filterwarnings("ignore")
 
 import math
 import numpy as np
@@ -99,24 +89,9 @@ def get_feature_names_from_pipeline(pipeline, num_cols, cat_cols):
         feat_names = [fn.replace("num__", "").replace("cat__", "") for fn in feat_names]
         return feat_names
     except Exception:
-        # 兜底：尝试手动组合
         names = []
         names.extend(num_cols)
-        try:
-            ohe = None
-            for name, trans, cols in prep.transformers_:
-                if name == "cat":
-                    ohe = trans
-                    break
-            if hasattr(ohe, "get_feature_names_out"):
-                names.extend(list(ohe.get_feature_names_out(cat_cols)))
-            else:
-                # 无法安全获取，填占位
-                rf = pipeline.named_steps["rf"]
-                k = max(0, rf.n_features_in_ - len(num_cols))
-                names.extend([f"{cat_cols[0]}_oh_{i}" for i in range(k)])
-        except Exception:
-            pass
+
         return names
 
 # =================== 数据读取与特征准备 ===================
@@ -164,8 +139,6 @@ cat_cols = [roadtype_col]
 
 # 仅用带 AADT 的样本
 labeled = roads[~roads["aadt_obs"].isna()].copy()
-if len(labeled) < 30:
-    raise ValueError(f"带 AADT 的样本太少（{len(labeled)}），无法稳定地做空间划分与训练。")
 
 # =================== 空间均匀 80/20 拆分 ===================
 labeled_m = labeled.to_crs(epsg=CRS_METRIC).copy()
@@ -333,7 +306,7 @@ feat_names_final = get_feature_names_from_pipeline(best_reg, best_num_cols, best
 imp_final = pd.DataFrame({"feature": feat_names_final, "importance": rf_final.feature_importances_})\
               .sort_values("importance", ascending=False).reset_index(drop=True)
 imp_final.to_csv("feature_importance_best.csv", index=False, encoding="utf-8-sig")
-print("📄 已保存：rf_iter_history.csv, feature_importance_best.csv 以及各轮的 feature_importance_round*.csv")
+print("out put：rf_iter_history.csv, feature_importance_best.csv and feature_importance_round*.csv")
 
 # 尝试：测试集置换重要性（更稳健）
 try:
@@ -352,6 +325,6 @@ try:
         "perm_importance_std":  perm.importances_std
     }).sort_values("perm_importance_mean", ascending=False)
     perm_df.to_csv("feature_importance_permutation.csv", index=False, encoding="utf-8-sig")
-    print("📄 已保存：feature_importance_permutation.csv")
+    print("out put：feature_importance_permutation.csv")
 except Exception as e:
-    print(f"[WARN] 置换重要性失败：{e}")
+    print("error")

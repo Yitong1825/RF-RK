@@ -1,17 +1,3 @@
-
-# regression_kriging_geo_stratified_split.py
-# ------------------------------------------------------------
-# 1) 读入：roads_with_poi_feats.geojson（全网特征），osm_id_with_aadt.csv（ID + AADT）
-# 2) 空间均匀 80/20 拆分（KMeans 空间簇 + 分簇抽样）
-# 3) 回归（含 one-hot、缺失处理）→ 训练残差
-# 4) 基于道路网络最短路径距离的普通克里金（只用训练集）
-# 5) 合成回归克里金预测、评估与变量重要性
-# 输出：roads_rk_pred.geojson、feature_importance_detailed.csv、feature_importance_family.csv
-# ------------------------------------------------------------
-
-import warnings
-warnings.filterwarnings("ignore")
-
 import math
 import numpy as np
 import pandas as pd
@@ -344,7 +330,7 @@ print(f"[RK]  RMSE(test)= {math.sqrt(mean_squared_error(yte, rk_pred_test)):.1f}
 
 # 9) 输出主结果
 roads_out.to_file(OUT_PATH, driver="GeoJSON")
-print(f"✅ 已输出：{OUT_PATH}")
+print(f"已输出：{OUT_PATH}")
 
 # 10) 变量重要性 & R² 汇总
 print("\n================ 变量重要性 & R² 汇总 ================")
@@ -403,5 +389,5 @@ family_import.to_csv("feature_importance_family.csv", index=False, encoding="utf
 
 print("\n[Feature Importance by Family]")
 print(family_import.to_string(index=False))
-print("\n📄 已保存：feature_importance_detailed.csv, feature_importance_family.csv")
+print("out put：feature_importance_detailed.csv, feature_importance_family.csv")
 print("=========================================================\n")
