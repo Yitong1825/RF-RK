@@ -8,7 +8,7 @@ from shapely.geometry import Point, LineString, MultiLineString
 from rapidfuzz import fuzz
 import unicodedata
 import re
-import shutil
+
 
 # =============================== 通用清洗函数 ===================================
 def clean_text(text):
@@ -134,9 +134,6 @@ if __name__ == "__main__":
     df_unmatched.to_excel("unmatched_records_distance_based.xlsx", index=False)
     print(f"Unmatched records：{len(df_unmatched)}，已保存 unmatched_records_distance_based.xlsx")
 
-    # 最后一步：创建 match.geojson 并赋值
-    # output_geojson_path = os.path.join(os.path.dirname(geojson_path), "match.geojson")
-    # copy_and_update_geojson(geojson_path, df_matched_all, output_geojson_path)
 
 # 导出用于插值的 CSV：osm_id + aadt
 if "osm_id" in df_matched_all.columns:
